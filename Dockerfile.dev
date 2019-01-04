@@ -3,6 +3,11 @@
 # --------------------
 # docker build -f Dockerfile.dev .
 
+# ------------------
+# Docker run command
+# ------------------
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+
 # Specify a base image
 FROM node:alpine
 
@@ -13,6 +18,7 @@ WORKDIR /app
 COPY package.json .
 COPY yarn.lock .
 RUN yarn install
+
 COPY . .
 
 # Default command
